@@ -70,6 +70,12 @@ angular.module('app.routes', [])
     controller: 'rulesCtrl'
   })
 
+  .state('results', {
+    url: '/page13',
+    templateUrl: 'templates/results.html',
+    controller: 'resultsCtrl'
+  })
+
 $urlRouterProvider.otherwise('/page1')
 
   

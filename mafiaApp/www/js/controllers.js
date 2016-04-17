@@ -1,42 +1,46 @@
 angular.module('app.controllers', [])
   
-.controller('page1Ctrl', function($scope) {
-
+.controller('page1Ctrl', function($scope, $ionicNavBarDelegate) {
+$ionicNavBarDelegate.showBackButton(false);
 })
    
-.controller('addPlayersCtrl', function($scope) {
-
+.controller('addPlayersCtrl', function($scope, $ionicNavBarDelegate) {
+$ionicNavBarDelegate.showBackButton(false);
 })
    
-.controller('signupCtrl', function($scope) {
-
+.controller('signupCtrl', function($scope, $ionicNavBarDelegate) {
+$ionicNavBarDelegate.showBackButton(false);
 })
    
-.controller('loginCtrl', function($scope) {
-
+.controller('loginCtrl', function($scope, $ionicNavBarDelegate) {
+$ionicNavBarDelegate.showBackButton(false);
 })
    
-.controller('statsCtrl', function($scope) {
-
+.controller('statsCtrl', function($scope, $ionicNavBarDelegate) {
+$ionicNavBarDelegate.showBackButton(false);
 })
    
-.controller('pendingCtrl', function($scope) {
-
+.controller('pendingCtrl', function($scope, $ionicNavBarDelegate) {
+$ionicNavBarDelegate.showBackButton(false);
 })
    
-.controller('gameNightCtrl', function($scope) {
-
+.controller('gameNightCtrl', function($scope, $ionicNavBarDelegate) {
+$ionicNavBarDelegate.showBackButton(false);
 })
    
-.controller('gameDayCtrl', function($scope) {
-
+.controller('gameDayCtrl', function($scope, $ionicNavBarDelegate) {
+$ionicNavBarDelegate.showBackButton(false);
 })
    
-.controller('voteCtrl', function($scope) {
-
+.controller('voteCtrl', function($scope, $ionicNavBarDelegate) {
+$ionicNavBarDelegate.showBackButton(false);
 })
    
-.controller('rulesCtrl', function($scope) {
-
+.controller('rulesCtrl', function($scope, $ionicNavBarDelegate) {
+$ionicNavBarDelegate.showBackButton(false);
+})
+   
+.controller('resultsCtrl', function($scope, $ionicNavBarDelegate) {
+$ionicNavBarDelegate.showBackButton(false);
 })
  
