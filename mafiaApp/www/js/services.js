@@ -1,17 +1,18 @@
 angular.module('app.services', [])
 
-.factory('BlankFactory', [function(){
-	return{
-		var user={};
-		user.games = 10;
+.factory('services', [function(){
+	var user={};
+		user.games = 210;
 		user.victories = 5;
+	
+	return{
 		getUser: function(){
 			return user;
-		}
+		},
 	}
 }])
 
-.service('BlankService', [function(){
+// .service('BlankService', [function(){
 
-}]);
+// }]);
 

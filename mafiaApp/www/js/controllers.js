@@ -16,9 +16,9 @@ angular.module('app.controllers', [])
 	$ionicNavBarDelegate.showBackButton(false);
 })
 
-.controller('statsCtrl', function($scope, $ionicNavBarDelegate) {
+.controller('statsCtrl', function($scope, $ionicNavBarDelegate, services) {
 	$ionicNavBarDelegate.showBackButton(false);
-	$scope.user = BlankFactory.getUser();
+	$scope.user = services.getUser();
 })
 
 .controller('pendingCtrl', function($scope, $ionicNavBarDelegate) {
