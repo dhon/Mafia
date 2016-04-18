@@ -2,13 +2,16 @@
     <ion-content padding="true" scroll="false" class="has-header">
         <form class="list">
             <label class="item item-input">
-                <span class="input-label">Games Played: {{user.games}}</span>
+                <span class="input-label">Games Played: {{users.games}}</span>
             </label>
             <label class="item item-input">
-                <span class="input-label">Games Won: {{user.victories}}</span>
+                <span class="input-label">Games Won: {{users.victories}}</span>
             </label>
             <label class="item item-input">
-                <span class="input-label">Other Stats</span>
+                <span class="input-label">Games Won as Mafia: {{users.mafiaWin}}</span>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Games Won as Town: {{users.townWin}}</span>
             </label>
         </form>
         <a ui-sref="page1" id="results-button39" class="button button-positive  button-block">Home</a>

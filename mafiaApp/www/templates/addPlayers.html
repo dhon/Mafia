@@ -3,31 +3,31 @@
         <form class="list">
             <label class="item item-input">
                 <span class="input-label">Player 1</span>
-                <input type="text" placeholder="my account">
+                <input type="text" value={{users.uname}}>
             </label>
             <label class="item item-input">
                 <span class="input-label">Player 2</span>
-                <input type="text" placeholder="username">
+                <input type="text" placeholder="username" ng-model="users.plyr2">
             </label>
             <label class="item item-input">
                 <span class="input-label">Player 3</span>
-                <input type="text" placeholder="username">
+                <input type="text" placeholder="username" ng-model="users.plyr3">
             </label>
             <label class="item item-input">
                 <span class="input-label">Player 4</span>
-                <input type="text" placeholder="username">
+                <input type="text" placeholder="username" ng-model="users.plyr4">
             </label>
             <label class="item item-input">
                 <span class="input-label">Player 5</span>
-                <input type="text" placeholder="username">
+                <input type="text" placeholder="username" ng-model="users.plyr5">
             </label>
             <label class="item item-input">
                 <span class="input-label">Player 6</span>
-                <input type="text" placeholder="username">
+                <input type="text" placeholder="username" ng-model="users.plyr6">
             </label>
             <label class="item item-input">
                 <span class="input-label">Player 7</span>
-                <input type="text" placeholder="username">
+                <input type="text" placeholder="username" ng-model="users.plyr7">
             </label>
         </form>
         <a ui-sref="pending" id="addPlayers-button10" class="button button-positive  button-block">Invite Players</a>
