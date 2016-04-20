@@ -1,7 +1,19 @@
 angular.module('app.controllers', [])
 
-.controller('page1Ctrl', function($scope, $ionicNavBarDelegate) {
+.controller('page1Ctrl', function($scope, $ionicNavBarDelegate, $ionicPopup, $location, services) {
 	$ionicNavBarDelegate.showBackButton(false);
+	$scope.checkUser = function(){
+		if(services.isUser()){
+			console.log("hello");
+			$location.path('/page3');
+		}
+		else{
+			var alertPopup = $ionicPopup.alert({
+				title: 'Cannot Create Game',
+				template: 'Must login before creating a game!'
+			});
+		}
+	}
 })
 
 .controller('addPlayersCtrl', function($scope, $ionicNavBarDelegate, services) {

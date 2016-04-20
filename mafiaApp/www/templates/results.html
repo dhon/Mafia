@@ -2,6 +2,9 @@
     <ion-content padding="true" scroll="false" class="has-header">
         <form class="list">
             <label class="item item-input">
+                <span class="input-label">{{users[0].uname}}: {{users[0].role}}</span><textarea placeholder=""> </textarea>
+            </label>
+            <label class="item item-input">
                 <span class="input-label">{{users[1].uname}}: {{users[1].role}}</span><textarea placeholder=""> </textarea>
             </label>
             <label class="item item-input">
@@ -18,9 +21,6 @@
             </label>
             <label class="item item-input">
                 <span class="input-label">{{users[6].uname}}: {{users[6].role}}</span><textarea placeholder=""> </textarea>
-            </label>
-            <label class="item item-input">
-                <span class="input-label">{{users[7].uname}}: {{users[7].role}}</span><textarea placeholder=""> </textarea>
             </label>
         </form>
         <a ui-sref="page1" id="results-button39" class="button button-positive  button-block" ng-click="resetData()">Home</a>

@@ -29,18 +29,27 @@ angular.module('app.services', [])
 	
 	return {
 		setRole: function(){
+			users[0].role = roles[Math.floor(Math.random()*4)];
 			users[1].role = roles[Math.floor(Math.random()*4)];
 			users[2].role = roles[Math.floor(Math.random()*4)];
 			users[3].role = roles[Math.floor(Math.random()*4)];
 			users[4].role = roles[Math.floor(Math.random()*4)];
 			users[5].role = roles[Math.floor(Math.random()*4)];
 			users[6].role = roles[Math.floor(Math.random()*4)];
-			users[7].role = roles[Math.floor(Math.random()*4)];
 		},
 		resetAll: function(){
-			for (var i = 0; i < users.length; i++){
+			users[0].role="";
+			for (var i = 1; i < users.length; i++){
 				users[i].uname="";
 				users[i].role="";
+			}
+		},
+		isUser: function(){
+			if (users[0].uname===""){
+				return false;
+			}
+			else{
+				return true;
 			}
 		},
 		users
