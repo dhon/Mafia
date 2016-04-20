@@ -1,29 +1,48 @@
 angular.module('app.services', [])
 
 .factory('services', [function(){
-	var users={};
-		users.uname = "";
-		users.plyr2 = "";
-		users.plyr3 = "";
-		users.plyr4 = "";
-		users.plyr5 = "";
-		users.plyr6 = "";
-		users.plyr7 = "";
+	var roles=["Mafia", "Cop", "Medic", "Vanilla"];
 
-		users.role1 = "Mafia";
-		users.role2 = "Cop";
-		users.role3 = "Vanilla";
-		users.role4 = "Mafia";
-		users.role5 = "Medic";
-		users.role6 = "Vanilla";
-		users.role7 = "Vanilla";
+	var users=[
+		{uname:"",
+		 role:""},
+		{uname:"",
+		 role:""},
+		{uname:"",
+		 role:""},
+		{uname:"",
+		 role:""},
+		{uname:"",
+		 role:""},
+		{uname:"",
+		 role:""},
+		{uname:"",
+		 role:""},
+	];
 
-		users.voted = "voted";
+	// users.voted = "voted"; 
 
-		users.games = 10;
-		users.victories = 5;
-		users.mafiaWin = 3;
-		users.townWin = 2;
+	// users.games = 10;
+	// users.victories = 5;
+	// users.mafiaWin = 3;
+	// users.townWin = 2;
 	
-	return users;
+	return {
+		setRole: function(){
+			users[1].role = roles[Math.floor(Math.random()*4)];
+			users[2].role = roles[Math.floor(Math.random()*4)];
+			users[3].role = roles[Math.floor(Math.random()*4)];
+			users[4].role = roles[Math.floor(Math.random()*4)];
+			users[5].role = roles[Math.floor(Math.random()*4)];
+			users[6].role = roles[Math.floor(Math.random()*4)];
+			users[7].role = roles[Math.floor(Math.random()*4)];
+		},
+		resetAll: function(){
+			for (var i = 0; i < users.length; i++){
+				users[i].uname="";
+				users[i].role="";
+			}
+		},
+		users
+	};
 }]);

@@ -1,14 +1,51 @@
 <ion-view title="Pending" id="page8" style="background-color:#cccccc;">
     <ion-content padding="true" scroll="false" class="has-header">
         <form class="list">
-            <ion-checkbox>{{users.uname}}</ion-checkbox>
-            <ion-checkbox>{{users.plyr2}}</ion-checkbox>
-            <ion-checkbox>{{users.plyr3}}</ion-checkbox>
-            <ion-checkbox>{{users.plyr4}}</ion-checkbox>
-            <ion-checkbox>{{users.plyr5}}</ion-checkbox>
-            <ion-checkbox>{{users.plyr6}}</ion-checkbox>
-            <ion-checkbox>{{users.plyr7}}</ion-checkbox>
+            <ul class="list">
+                <li class="item item-checkbox">
+                    {{users[1].uname}}
+                    <label class="checkbox">
+                    <input type="checkbox" checked="true">
+                    </label>
+                </li>
+                <li class="item item-checkbox">
+                    {{users[2].uname}}
+                    <label class="checkbox">
+                    <input type="checkbox" checked="true">
+                    </label>
+                </li>
+                <li class="item item-checkbox">
+                    {{users[3].uname}}
+                    <label class="checkbox">
+                    <input type="checkbox" checked="true">
+                    </label>
+                </li>
+                <li class="item item-checkbox">
+                    {{users[4].uname}}
+                    <label class="checkbox">
+                    <input type="checkbox" checked="true">
+                    </label>
+                </li>
+                <li class="item item-checkbox">
+                    {{users[5].uname}}
+                    <label class="checkbox">
+                    <input type="checkbox" checked="true">
+                    </label>
+                </li>
+                <li class="item item-checkbox">
+                    {{users[6].uname}}
+                    <label class="checkbox">
+                    <input type="checkbox" checked="true">
+                    </label>
+                </li>
+                <li class="item item-checkbox">
+                    {{users[7].uname}}
+                    <label class="checkbox">
+                    <input type="checkbox" checked="true">
+                    </label>
+                </li>
+            </ul>
         </form>
-        <a ui-sref="gameNight" id="pending-button20" class="button button-positive  button-block">Start</a>
+        <a ui-sref="gameNight" id="pending-button20" class="button button-positive  button-block" ng-click="Role()">Start</a>
     </ion-content>
 </ion-view>
