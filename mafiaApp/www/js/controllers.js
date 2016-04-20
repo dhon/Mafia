@@ -4,7 +4,6 @@ angular.module('app.controllers', [])
 	$ionicNavBarDelegate.showBackButton(false);
 	$scope.checkUser = function(){
 		if(services.isUser()){
-			console.log("hello");
 			$location.path('/page3');
 		}
 		else{

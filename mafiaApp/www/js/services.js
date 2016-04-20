@@ -1,7 +1,7 @@
 angular.module('app.services', [])
 
 .factory('services', [function(){
-	var roles=["Mafia", "Cop", "Medic", "Vanilla"];
+	var roles=["Mafia", "Mafia", "Cop", "Medic", "Vanilla", "Vanilla", "Vanilla"];
 
 	var users=[
 		{uname:"",
@@ -29,13 +29,19 @@ angular.module('app.services', [])
 	
 	return {
 		setRole: function(){
-			users[0].role = roles[Math.floor(Math.random()*4)];
-			users[1].role = roles[Math.floor(Math.random()*4)];
-			users[2].role = roles[Math.floor(Math.random()*4)];
-			users[3].role = roles[Math.floor(Math.random()*4)];
-			users[4].role = roles[Math.floor(Math.random()*4)];
-			users[5].role = roles[Math.floor(Math.random()*4)];
-			users[6].role = roles[Math.floor(Math.random()*4)];
+			var current = roles.length, temp, randomIndex;
+			while (current !== 0){
+				randomIndex = Math.floor(Math.random()*current);
+				current -= 1;
+
+				temp = roles[current];
+				roles[current] = roles[randomIndex];
+				roles[randomIndex] = temp;
+			}
+
+			for (var i = 0; i < users.length; i++){
+				users[i].role = roles[i];
+			}
 		},
 		resetAll: function(){
 			users[0].role="";
