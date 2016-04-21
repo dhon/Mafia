@@ -76,6 +76,12 @@ angular.module('app.routes', [])
     controller: 'resultsCtrl'
   })
 
+  .state('postVote', {
+    url: '/postvote',
+    templateUrl: 'templates/postvote.html',
+    controller: 'postVoteCtrl'
+  })
+
 $urlRouterProvider.otherwise('/page1')
 
   
