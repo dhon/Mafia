@@ -65,6 +65,9 @@ angular.module('app.services', [])
 			// }
 			return true;
 		},
+		setNom: function(user){
+			voted.vname = users[user].uname;
+		},
 		setVote: function(vote){
 			if (vote){
 				users[0].vote = "Yes";
