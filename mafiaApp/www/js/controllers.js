@@ -65,10 +65,10 @@ angular.module('app.controllers', [])
 				template: 'This player is dead!'
 				});
 			}
-			else if (services.validateRole(user) === "Mafia" && services.users[0].role === "Mafia"){
+			else if (services.validateRole(user) === "Mafioso" && services.users[0].role === "Mafioso"){
 				var alertMafia = $ionicPopup.alert({
 				title: 'Cannot Choose Player',
-				template: 'You cannot choose another Mafia!'
+				template: 'You cannot choose another Mafioso!'
 				});
 			}
 			else {
@@ -93,7 +93,13 @@ angular.module('app.controllers', [])
 			$location.path('/page9');
 		}, 8000);
 
-		if (services.users[0].role === "Medic"){
+		if (services.users[0].target === -1){
+			var alertNoChoice = $ionicPopup.alert({
+			title: 'No Choice',
+			template: 'You did not chose anyone!'
+			});
+		}
+		else if (services.users[0].role === "Medic"){
 			services.save(services.users[services.users[0].target]);
 			var alertRole = $ionicPopup.alert({
 			title: 'Medic Save',
@@ -107,7 +113,7 @@ angular.module('app.controllers', [])
 			template: services.users[services.users[0].target].uname+' is a member of the '+ role
 			});
 		}
-		else if (services.users[0].role === "Mafia"){
+		else if (services.users[0].role === "Mafioso"){
 			if (!services.users[services.users[0].target].saved){
 				services.kill(services.users[services.users[0].target]);
 				var alertKill = $ionicPopup.alert({

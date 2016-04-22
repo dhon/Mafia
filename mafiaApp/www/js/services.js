@@ -2,8 +2,8 @@ angular.module('app.services', [])
 
 .factory('services', [function(){
 	var roles=[
-	{rname: "Mafia", raction:"Kill"},
-	{rname: "Mafia", raction:"Kill"},
+	{rname: "Mafioso", raction:"Kill"},
+	{rname: "Mafioso", raction:"Kill"},
 	{rname: "Cop", raction: "Check"},
 	{rname:"Medic", raction:"Save"},
 	{rname: "Vanilla", raction:"Friend"},
@@ -50,7 +50,7 @@ angular.module('app.services', [])
 			user.saved = true;
 		},
 		check: function(user){
-			if (user.role === "Mafia"){
+			if (user.role === "Mafioso"){
 				return "Mafia";
 			}
 			else{
@@ -112,12 +112,17 @@ angular.module('app.services', [])
 				users[0].vote = "No";
 			}
 			for (var i = 1; i < users.length; i++){
-				if (i%2 === 0){
+				// if (i%2 === 0){
+				if (users[i].status){
 					users[i].vote = "Yes";
 				}
-				else{
-					users[i].vote = "No";
+				else {
+					users[i].vote = "Dead: "+users[i].role;
 				}
+				// }
+				// else{
+				// 	users[i].vote = "No";
+				// }
 			}
 		},
 		checkVote: function(){
@@ -144,7 +149,7 @@ angular.module('app.services', [])
 			var town = 0;
 			var mafia = 0;
 			for(i = 0; i < users.length; i++){
-				if(users[i].status && users[i].role === "Mafia"){
+				if(users[i].status && users[i].role === "Mafioso"){
 					mafia+=1;
 				}else if(users[i].status){
 					town+=1;
