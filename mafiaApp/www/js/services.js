@@ -12,13 +12,13 @@ angular.module('app.services', [])
 	];
 
 	var users=[
-	{uname:"",role:"",act:"", status:true, vote:"No", saved:false, target:-1},
-	{uname:"",role:"",act:"", status:true, vote:"No", saved:false, target:-1},
-	{uname:"",role:"",act:"", status:true, vote:"No", saved:false, target:-1},
-	{uname:"",role:"",act:"", status:true, vote:"No", saved:false, target:-1},
-	{uname:"",role:"",act:"", status:true, vote:"No", saved:false, target:-1},
-	{uname:"",role:"",act:"", status:true, vote:"No", saved:false, target:-1},
-	{uname:"",role:"",act:"", status:true, vote:"No", saved:false, target:-1}
+	{uname:"",role:"",act:"", status:true, button:"", vote:"No", saved:false, target:-1, message:""},
+	{uname:"",role:"",act:"", status:true, button:"", vote:"No", saved:false, target:-1, message:""},
+	{uname:"",role:"",act:"", status:true, button:"", vote:"No", saved:false, target:-1, message:""},
+	{uname:"",role:"",act:"", status:true, button:"", vote:"No", saved:false, target:-1, message:""},
+	{uname:"",role:"",act:"", status:true, button:"", vote:"No", saved:false, target:-1, message:""},
+	{uname:"",role:"",act:"", status:true, button:"", vote:"No", saved:false, target:-1, message:""},
+	{uname:"",role:"",act:"", status:true, button:"", vote:"No", saved:false, target:-1, message:""}
 	];
 
 	stats={};
@@ -45,6 +45,7 @@ angular.module('app.services', [])
 		},
 		kill: function(user){
 			user.status = false;
+			user.button = user.uname + ' is dead. They were a ' + user.role + '.';
 		},
 		save: function(user){
 			user.saved = true;
@@ -67,12 +68,21 @@ angular.module('app.services', [])
 				roles[current] = roles[randomIndex];
 				roles[randomIndex] = temp;
 			}
-
+			var mafia = [];
 			for (var i = 0; i < users.length; i++){
 				users[i].role = roles[i].rname;
 				users[i].act = roles[i].raction;
+				if (users[i].role === "Mafioso"){
+					mafia.push(i);
+				}
 			}
-
+			users[mafia[0]].message = "Your partner is " +users[mafia[1]].uname+ ".";
+			users[mafia[1]].message = "Your partner is " +users[mafia[0]].uname+ ".";
+		},
+		setButton: function(){
+			for (var i = 0; i < users.length; i++){
+				users[i].button = users[i].uname;
+			}
 		},
 		resetAll: function(){
 			users[0].role="";
@@ -117,7 +127,7 @@ angular.module('app.services', [])
 					users[i].vote = "Yes";
 				}
 				else {
-					users[i].vote = "Dead: "+users[i].role;
+					users[i].vote = "Dead. They were a "+users[i].role;
 				}
 				// }
 				// else{

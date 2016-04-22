@@ -1,21 +1,19 @@
-<ion-view title="Game [Night]" id="page9" style="background-color:#0C0C2A;">
+<ion-view title="Night" id="page9" style="background-color:#0C0C2A;">
     <ion-content padding="true" class="has-header">
         <form class="list">
             <label class="item item-input">
                 <span class="input-label">You are a {{users[0].role}}. Choose your {{users[0].act}}.</span>
             </label>
         </form>
-        <a id="gameNight-button21" class="button button-positive  button-block" ng-click="Act(0)">{{users[0].uname}}</a>
-        <a id="gameNight-button36" class="button button-positive  button-block" ng-click="Act(1)">{{users[1].uname}}</a>
-        <a id="gameNight-button22" class="button button-positive  button-block" ng-click="Act(2)">{{users[2].uname}}</a>
-        <a id="gameNight-button23" class="button button-positive  button-block" ng-click="Act(3)">{{users[3].uname}}</a>
-        <a id="gameNight-button24" class="button button-positive  button-block" ng-click="Act(4)">{{users[4].uname}}</a>
-        <a id="gameNight-button25" class="button button-positive  button-block" ng-click="Act(5)">{{users[5].uname}}</a>
-        <a id="gameNight-button26" class="button button-positive  button-block" ng-click="Act(6)">{{users[6].uname}}</a>
+        <a id="gameNight-button21" class="button button-positive  button-block" ng-click="Act(0)">{{users[0].button}}</a>
+        <a id="gameNight-button36" class="button button-positive  button-block" ng-click="Act(1)">{{users[1].button}}</a>
+        <a id="gameNight-button22" class="button button-positive  button-block" ng-click="Act(2)">{{users[2].button}}</a>
+        <a id="gameNight-button23" class="button button-positive  button-block" ng-click="Act(3)">{{users[3].button}}</a>
+        <a id="gameNight-button24" class="button button-positive  button-block" ng-click="Act(4)">{{users[4].button}}</a>
+        <a id="gameNight-button25" class="button button-positive  button-block" ng-click="Act(5)">{{users[5].button}}</a>
+        <a id="gameNight-button26" class="button button-positive  button-block" ng-click="Act(6)">{{users[6].button}}</a>
         <form class="list">
-            <label class="item item-input">
-                <span class="input-label">console</span>
-            </label>
+            <h4 style="text-align: center; color: #ffffff">{{users[0].message}}</h4> 
         </form>
     </ion-content>
 </ion-view>

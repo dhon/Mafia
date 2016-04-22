@@ -1,21 +1,19 @@
-<ion-view title="Game [Day]"  id="page11" style="background-color:#7EC0EE;">
+<ion-view title="Day"  id="page11" style="background-color:#7EC0EE;">
     <ion-content padding="true" class="has-header">
         <form class="list">
             <label class="item item-input">
                 <span class="input-label">You are a {{users[0].role}}. Select player to formal.</span>
             </label>
         </form>
-        <a id="gameDay-button37" class="button button-positive  button-block" ng-click="Nominate(0)">{{users[0].uname}}</a>
-        <a id="gameDay-button27" class="button button-positive  button-block" ng-click="Nominate(1)">{{users[1].uname}}</a>
-        <a id="gameDay-button28" class="button button-positive  button-block" ng-click="Nominate(2)">{{users[2].uname}}</a>
-        <a id="gameDay-button29" class="button button-positive  button-block" ng-click="Nominate(3)">{{users[3].uname}}</a>
-        <a id="gameDay-button30" class="button button-positive  button-block" ng-click="Nominate(4)">{{users[4].uname}}</a>
-        <a id="gameDay-button31" class="button button-positive  button-block" ng-click="Nominate(5)">{{users[5].uname}}</a>
-        <a id="gameDay-button32" class="button button-positive  button-block" ng-click="Nominate(6)">{{users[6].uname}}</a>
+        <a id="gameDay-button37" class="button button-positive  button-block" ng-click="Nominate(0)">{{users[0].button}}</a>
+        <a id="gameDay-button27" class="button button-positive  button-block" ng-click="Nominate(1)">{{users[1].button}}</a>
+        <a id="gameDay-button28" class="button button-positive  button-block" ng-click="Nominate(2)">{{users[2].button}}</a>
+        <a id="gameDay-button29" class="button button-positive  button-block" ng-click="Nominate(3)">{{users[3].button}}</a>
+        <a id="gameDay-button30" class="button button-positive  button-block" ng-click="Nominate(4)">{{users[4].button}}</a>
+        <a id="gameDay-button31" class="button button-positive  button-block" ng-click="Nominate(5)">{{users[5].button}}</a>
+        <a id="gameDay-button32" class="button button-positive  button-block" ng-click="Nominate(6)">{{users[6].button}}</a>
         <form class="list">
-            <label class="item item-input">
-                <span class="input-label">console</span>
-            </label>
+            <h4 style="text-align: center;">{{users[0].message}}</h4> 
         </form>
     </ion-content>
 </ion-view>

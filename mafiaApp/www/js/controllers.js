@@ -40,6 +40,7 @@ angular.module('app.controllers', [])
 	$scope.Role = function(){
 		services.setRole();
 	}
+	services.setButton();
 	$scope.users = services.users;
 })
 
