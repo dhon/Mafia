@@ -53,6 +53,30 @@ angular.module('app.controllers', [])
 			$location.path('/page13');
 		}
 
+		//Code found on http://jsbin.com/haliz/1/edit?html,js,output
+		//Written by Mario Zupan
+		//Open-source
+		$scope.counter = 8;
+ 		var mytimeout = null; 
+		$scope.onTimeout = function() {
+	        if($scope.counter ===  0) {
+	            $scope.$broadcast('timer-stopped', 0);
+	            $timeout.cancel(mytimeout);
+	            return;
+	        }
+	        $scope.counter--;
+	        mytimeout = $timeout($scope.onTimeout, 1000);
+	    };
+
+        mytimeout = $timeout($scope.onTimeout, 1000);
+
+	    $scope.$on('timer-stopped', function(event, remaining) {
+	        if(remaining === 0) {
+	            $location.path('/page11');
+	        }
+	    });
+	    //End of retrieved code
+
 		$scope.Act = function(user){
 			if (user === 0){
 				var alertSame = $ionicPopup.alert({
@@ -80,9 +104,6 @@ angular.module('app.controllers', [])
 				services.setTarget(user);
 			}
 		}
-		$timeout(function(){
-			$location.path('/page11');
-		}, 8000);
 	});
 })
 
@@ -90,14 +111,11 @@ angular.module('app.controllers', [])
 	$scope.$on('$ionicView.enter', function(){
 		$ionicNavBarDelegate.showBackButton(false);
 		$scope.users = services.users;
-		timer = $timeout(function(){
-			$location.path('/page9');
-		}, 8000);
 
 		if (services.users[0].target === -1){
 			var alertNoChoice = $ionicPopup.alert({
 			title: 'No Choice',
-			template: 'You did not chose anyone!'
+			template: 'You did not choose anyone!'
 			});
 		}
 		else if (services.users[0].role === "Medic"){
@@ -141,10 +159,34 @@ angular.module('app.controllers', [])
 			$location.path('/page13');
 		}
 
+		//Code found on http://jsbin.com/haliz/1/edit?html,js,output
+		//Written by Mario Zupan
+		//Open-source
+		$scope.counter = 8;
+ 		var mytimeout = null; 
+		$scope.onTimeout = function() {
+	        if($scope.counter ===  0) {
+	            $scope.$broadcast('timer-stopped', 0);
+	            $timeout.cancel(mytimeout);
+	            return;
+	        }
+	        $scope.counter--;
+	        mytimeout = $timeout($scope.onTimeout, 1000);
+	    };
+
+        mytimeout = $timeout($scope.onTimeout, 1000);
+
+	    $scope.$on('timer-stopped', function(event, remaining) {
+	        if(remaining === 0) {
+	            $location.path('/page9');
+	        }
+	    });
+	    //End of retrieved code
+
 		$scope.Nominate = function(user){
 			if (services.validateStatus(user)){
 				services.setNom(user);
-				$timeout.cancel(timer);
+				$timeout.cancel(mytimeout);
 				$location.path('/page10');
 			}
 			else {
@@ -165,9 +207,30 @@ angular.module('app.controllers', [])
 		}
 		$scope.users = services.users;
 		$scope.voted = services.voted;
-		$timeout(function(){
-			$location.path('/postvote');
-		}, 8000);
+		
+		//Code found on http://jsbin.com/haliz/1/edit?html,js,output
+		//Written by Mario Zupan
+		//Open-source
+		$scope.counter = 8;
+ 		var mytimeout = null; 
+		$scope.onTimeout = function() {
+	        if($scope.counter ===  0) {
+	            $scope.$broadcast('timer-stopped', 0);
+	            $timeout.cancel(mytimeout);
+	            return;
+	        }
+	        $scope.counter--;
+	        mytimeout = $timeout($scope.onTimeout, 1000);
+	    };
+
+        mytimeout = $timeout($scope.onTimeout, 1000);
+
+	    $scope.$on('timer-stopped', function(event, remaining) {
+	        if(remaining === 0) {
+	            $location.path('/postvote');
+	        }
+	    });
+	    //End of retrieved code
 	});
 })
 
@@ -178,9 +241,30 @@ angular.module('app.controllers', [])
 		$scope.users = services.users;
 		$scope.voted = services.voted;
 		services.kill(services.voted.vname);
-		$timeout(function(){
-			$location.path('/page9');
-		}, 8000);
+		
+		//Code found on http://jsbin.com/haliz/1/edit?html,js,output
+		//Written by Mario Zupan
+		//Open-source
+		$scope.counter = 10;
+ 		var mytimeout = null; 
+		$scope.onTimeout = function() {
+	        if($scope.counter ===  0) {
+	            $scope.$broadcast('timer-stopped', 0);
+	            $timeout.cancel(mytimeout);
+	            return;
+	        }
+	        $scope.counter--;
+	        mytimeout = $timeout($scope.onTimeout, 1000);
+	    };
+
+        mytimeout = $timeout($scope.onTimeout, 1000);
+
+	    $scope.$on('timer-stopped', function(event, remaining) {
+	        if(remaining === 0) {
+	            $location.path('/page9');
+	        }
+	    });
+	    //End of retrieved code
 	});
 })
 
