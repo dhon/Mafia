@@ -47,11 +47,22 @@ angular.module('app.controllers', [])
 	$scope.$on('$ionicView.enter', function(){
 		$ionicNavBarDelegate.showBackButton(false);
 		$scope.users = services.users;
+
+		if (services.isGameOver()){
+			$location.path('/page13');
+		}
+
 		$scope.Act = function(user){
 			if (user === 0){
 				var alertSame = $ionicPopup.alert({
 				title: 'Cannot Choose Player',
 				template: 'You cannot choose yourself!'
+				});
+			}
+			else if (!services.users[user].status){
+				var alertDead = $ionicPopup.alert({
+				title: 'Cannot Choose Player',
+				template: 'This player is dead!'
 				});
 			}
 			else if (services.validateRole(user) === "Mafia" && services.users[0].role === "Mafia"){
@@ -119,6 +130,10 @@ angular.module('app.controllers', [])
 		}
 		services.resetTarget();
 
+		if (services.isGameOver()){
+			$location.path('/page13');
+		}
+
 		$scope.Nominate = function(user){
 			if (services.validateStatus(user)){
 				services.setNom(user);
@@ -169,6 +184,7 @@ angular.module('app.controllers', [])
 .controller('resultsCtrl', function($scope, $ionicNavBarDelegate, services) {
 	$ionicNavBarDelegate.showBackButton(false);
 	$scope.users = services.users;
+	$scope.winner = services.winner.team;
 	$scope.resetData = function(){
 		services.resetAll();
 	}

@@ -27,10 +27,12 @@ angular.module('app.services', [])
 	stats.mafiaWin = 3;
 	stats.townWin = 2;
 
-
 	voted = {};
 	voted.vname = {};
 	voted.result = "live";
+
+	winner = {};
+	winner.team = "";
 	
 	return {
 		resetTarget: function(){
@@ -120,17 +122,47 @@ angular.module('app.services', [])
 		},
 		checkVote: function(){
 			var count = 0;
+			var alive = 0;
+			var majority = 0;
+			voted.result = "live";
 			for (var i = 0; i < users.length; i++){
-				if (users[i].vote === "Yes"){
-					count += 1;
+				if (users[i].status){
+					alive += 1;
+					if (users[i].vote === "Yes"){
+						count += 1;
+					}
 				}
 			}
-			if (count >= 4){
-				voted.result = "die";
+			majority = alive;
+			if (alive % 2 == 1){
+				majority++;
 			}
+			if (count >= majority/2)
+				voted.result = "die";
+		},
+		isGameOver: function(){
+			var town = 0;
+			var mafia = 0;
+			for(i = 0; i < users.length; i++){
+				if(users[i].status && users[i].role === "Mafia"){
+					mafia+=1;
+				}else if(users[i].status){
+					town+=1;
+				}
+			}
+			if (mafia === town){
+				winner.team = "Mafia";
+				return true;
+			}
+			if (mafia === 0){
+				winner.team = "Town";
+				return true;
+			}
+			return false;
 		},
 		users,
 		voted,
+		winner,
 		stats
 	};
 }]);
