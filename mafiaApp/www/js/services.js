@@ -12,13 +12,13 @@ angular.module('app.services', [])
 	];
 
 	var users=[
-	{uname:"",role:"",act:"", status:true, vote:"No"},
-	{uname:"",role:"",act:"", status:true, vote:"No"},
-	{uname:"",role:"",act:"", status:true, vote:"No"},
-	{uname:"",role:"",act:"", status:true, vote:"No"},
-	{uname:"",role:"",act:"", status:true, vote:"No"},
-	{uname:"",role:"",act:"", status:true, vote:"No"},
-	{uname:"",role:"",act:"", status:true, vote:"No"}
+	{uname:"",role:"",act:"", status:true, vote:"No", saved:false, target:-1},
+	{uname:"",role:"",act:"", status:true, vote:"No", saved:false, target:-1},
+	{uname:"",role:"",act:"", status:true, vote:"No", saved:false, target:-1},
+	{uname:"",role:"",act:"", status:true, vote:"No", saved:false, target:-1},
+	{uname:"",role:"",act:"", status:true, vote:"No", saved:false, target:-1},
+	{uname:"",role:"",act:"", status:true, vote:"No", saved:false, target:-1},
+	{uname:"",role:"",act:"", status:true, vote:"No", saved:false, target:-1}
 	];
 
 	stats={};
@@ -27,11 +27,34 @@ angular.module('app.services', [])
 	stats.mafiaWin = 3;
 	stats.townWin = 2;
 
+
 	voted = {};
-	voted.vname = "";
+	voted.vname = {};
 	voted.result = "live";
 	
 	return {
+		resetTarget: function(){
+			for (var i = 0; i < users.length; i++){
+				users[i].target = -1;
+			}
+		},
+		setTarget: function(index){
+			users[0].target = index;
+		},
+		kill: function(user){
+			user.status = false;
+		},
+		save: function(user){
+			user.saved = true;
+		},
+		check: function(user){
+			if (user.role === "Mafia"){
+				return "Mafia";
+			}
+			else{
+				return "Town";
+			}
+		},
 		setRole: function(){
 			var current = roles.length, temp, randomIndex;
 			while (current !== 0){
@@ -54,6 +77,11 @@ angular.module('app.services', [])
 			for (var i = 1; i < users.length; i++){
 				users[i].uname="";
 				users[i].role="";
+				users[i].act="";
+				users[i].status = true;
+				users[i].vote = "No";
+				users[i].saved = false;
+				users[i].target = -1;
 			}
 		},
 		isUser: function(){
@@ -66,7 +94,13 @@ angular.module('app.services', [])
 			return true;
 		},
 		setNom: function(user){
-			voted.vname = users[user].uname;
+			voted.vname = users[user];
+		},
+		validateStatus: function(user){
+			return users[user].status;
+		},
+		validateRole: function(user){
+			return users[user].role;
 		},
 		setVote: function(vote){
 			if (vote){

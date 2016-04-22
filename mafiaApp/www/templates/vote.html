@@ -3,7 +3,7 @@
         <body onload="voteForm.reset();">
             <form class="list" name="voteForm">
                 <label class="item item-input">
-                    <span class="input-label">Would you like to vote off {{voted.vname}}?</span>
+                    <span class="input-label">Would you like to vote off {{voted.vname.uname}}?</span>
                 </label>
                  <a id="vote-button33" class="button button-positive  button-block" ng-click="Vote(true)">Yes</a>
                  <a id="vote-button34" class="button button-positive  button-block" ng-click="Vote(false)">No</a>
