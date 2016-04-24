@@ -112,47 +112,23 @@ angular.module('app.controllers', [])
 		$ionicNavBarDelegate.showBackButton(false);
 		$scope.users = services.users;
 
+		services.setOtherTargets();
+		services.mafiaKill();
+
 		if (services.users[0].target === -1){
 			var alertNoChoice = $ionicPopup.alert({
 			title: 'No Choice',
 			template: 'You did not choose anyone!'
 			});
 		}
-		else if (services.users[0].role === "Medic"){
-			services.save(services.users[services.users[0].target]);
-			var alertRole = $ionicPopup.alert({
-			title: 'Medic Save',
-			template: 'You chose to save '+services.users[services.users[0].target].uname
-			});			
-		}
-		else if (services.users[0].role === "Cop"){
-			role = services.check(services.users[services.users[0].target]);
-			var alertRole = $ionicPopup.alert({
-			title: 'Cop Check',
-			template: services.users[services.users[0].target].uname+' is a member of the '+ role
-			});
-		}
-		else if (services.users[0].role === "Mafioso"){
-			if (!services.users[services.users[0].target].saved){
-				services.kill(services.users[services.users[0].target]);
-				var alertKill = $ionicPopup.alert({
-				title: 'Mafia Kill',
-				template: 'You killed '+services.users[services.users[0].target].uname
-				});
-			}
-			else{
-				var alertKill = $ionicPopup.alert({
-				title: 'Mafia Kill',
-				template: 'You failed to kill '+services.users[services.users[0].target].uname
-				});
-			}
-		}
 		else{
-			var alertVanilla = $ionicPopup.alert({
-			title: 'Vanilla',
-			template: 'You did nothing!'
+			var messages = services.users[0].nightAction(0);
+			var alert = $ionicPopup.alert({
+			title: messages[0],
+			template: messages[1]
 			});
 		}
+
 		services.resetTarget();
 
 		if (services.isGameOver()){
