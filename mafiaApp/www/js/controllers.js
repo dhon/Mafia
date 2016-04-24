@@ -49,10 +49,6 @@ angular.module('app.controllers', [])
 		$ionicNavBarDelegate.showBackButton(false);
 		$scope.users = services.users;
 
-		if (services.isGameOver()){
-			$location.path('/page13');
-		}
-
 		//Code found on http://jsbin.com/haliz/1/edit?html,js,output
 		//Written by Mario Zupan
 		//Open-source
@@ -76,6 +72,11 @@ angular.module('app.controllers', [])
 	        }
 	    });
 	    //End of retrieved code
+
+		if (services.isGameOver()){
+			$location.path('/page13');
+			$timeout.cancel(mytimeout);
+		}
 
 		$scope.Act = function(user){
 			if (user === 0){
@@ -115,26 +116,6 @@ angular.module('app.controllers', [])
 		services.setOtherTargets();
 		services.mafiaKill();
 
-		if (services.users[0].target === -1){
-			var alertNoChoice = $ionicPopup.alert({
-			title: 'No Choice',
-			template: 'You did not choose anyone!'
-			});
-		}
-		else{
-			var messages = services.users[0].nightAction(0);
-			var alert = $ionicPopup.alert({
-			title: messages[0],
-			template: messages[1]
-			});
-		}
-
-		services.resetTarget();
-
-		if (services.isGameOver()){
-			$location.path('/page13');
-		}
-
 		//Code found on http://jsbin.com/haliz/1/edit?html,js,output
 		//Written by Mario Zupan
 		//Open-source
@@ -158,6 +139,27 @@ angular.module('app.controllers', [])
 	        }
 	    });
 	    //End of retrieved code
+
+		if (services.isGameOver()){
+			$location.path('/page13');
+			$timeout.cancel(mytimeout);
+		}
+
+		if (services.users[0].target === -1){
+			var alertNoChoice = $ionicPopup.alert({
+			title: 'No Choice',
+			template: 'You did not choose anyone!'
+			});
+		}
+		else{
+			var messages = services.users[0].nightAction(0);
+			var alert = $ionicPopup.alert({
+			title: messages[0],
+			template: messages[1]
+			});
+		}
+
+		services.resetTarget();
 
 		$scope.Nominate = function(user){
 			if (services.validateStatus(user)){
