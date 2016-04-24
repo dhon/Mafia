@@ -114,6 +114,7 @@ angular.module('app.controllers', [])
 		$scope.users = services.users;
 
 		services.setOtherTargets();
+		services.medicSave();
 		services.mafiaKill();
 
 		//Code found on http://jsbin.com/haliz/1/edit?html,js,output
@@ -223,7 +224,7 @@ angular.module('app.controllers', [])
 		//Code found on http://jsbin.com/haliz/1/edit?html,js,output
 		//Written by Mario Zupan
 		//Open-source
-		$scope.counter = 10;
+		$scope.counter = 8;
  		var mytimeout = null; 
 		$scope.onTimeout = function() {
 	        if($scope.counter ===  0) {

@@ -80,6 +80,16 @@ angular.module('app.services', [])
 				}
 			}
 		},
+		medicSave: function(){
+			if (users[0].role !== "Medic"){
+				for (var i = 1; i < users.length; i++){
+					if (users[i].role === "Medic"){
+						save(users[users[i].target]);
+						break;
+					}
+				}
+			}
+		},
 		save,
 		check,
 		setRole: function(){
@@ -158,12 +168,9 @@ angular.module('app.services', [])
 			winner.team = "";
 		},
 		isUser: function(){
-			// if (users[0].uname===""){
-			// 	return false;
-			// }
-			// else{
-			// 	return true;
-			// }
+			if (users[0].uname===""){
+				return false;
+			}
 			return true;
 		},
 		setNom: function(user){
@@ -182,25 +189,28 @@ angular.module('app.services', [])
 			else{
 				users[0].vote = "No";
 			}
-			//Set votes for all automated players
+			//Randomly set votes for all automated players
+			var choice = 0;
 			for (var i = 1; i < users.length; i++){
-				// if (i%2 === 0){
+				choice = Math.floor(Math.random()*2);
 				if (users[i].status){
-					users[i].vote = "Yes";
+					if (choice === 0){
+						users[i].vote = "Yes";
+					}
+					else{
+						users[i].vote = "No";
+					}
 				}
 				else {
 					users[i].vote = "Dead. They were a "+users[i].role;
 				}
-				// }
-				// else{
-				// 	users[i].vote = "No";
-				// }
 			}
 		},
 		checkVote: function(){
 			var count = 0;
 			var alive = 0;
 			var majority = 0;
+			var odd = false;
 			voted.result = "live";
 			for (var i = 0; i < users.length; i++){
 				if (users[i].status){
@@ -213,9 +223,14 @@ angular.module('app.services', [])
 			majority = alive;
 			if (alive % 2 == 1){
 				majority++;
+				var odd = true;
 			}
-			if (count >= majority/2)
+			if (odd && count >= majority/2){
 				voted.result = "die";
+			}
+			else if (count > majority/2){
+				voted.result = "die";
+			}
 		},
 		isGameOver: function(){
 			var town = 0;
