@@ -216,10 +216,12 @@ angular.module('app.controllers', [])
 .controller('postVoteCtrl', function($scope, $ionicNavBarDelegate, $timeout, $location, services) {
 	$scope.$on('$ionicView.enter', function(){		
 		$ionicNavBarDelegate.showBackButton(false);
-		services.checkVote();
+		var result = services.checkVote();
 		$scope.users = services.users;
 		$scope.voted = services.voted;
-		services.kill(services.voted.vname);
+		if (result === "die"){
+			services.kill(services.voted.vname);
+		}
 		
 		//Code found on http://jsbin.com/haliz/1/edit?html,js,output
 		//Written by Mario Zupan
