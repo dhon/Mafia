@@ -4,7 +4,8 @@ angular.module('app.services', [])
 	var roles=[
 	{rname: "Mafioso", raction:"Kill"},
 	{rname: "Mafioso", raction:"Kill"},
-	{rname: "Cop", raction: "Check"},
+	//MODIFIED FOR DEMO
+	// {rname: "Cop", raction: "Check"},
 	{rname:"Medic", raction:"Save"},
 	{rname: "Vanilla", raction:"Friend"},
 	{rname: "Vanilla", raction:"Friend"},
@@ -103,8 +104,16 @@ angular.module('app.services', [])
 				roles[randomIndex] = temp;
 			}
 			for (var i = 0; i < users.length; i++){
-				users[i].role = roles[i].rname;
-				users[i].act = roles[i].raction;
+				//MODIFIED FOR DEMO
+				if(i === 0){
+					users[i].role = "Cop";
+					users[i].act = "Check";
+				}
+				else{
+					users[i].role = roles[i-1].rname;
+					users[i].act = roles[i-1].raction;
+				}
+				//^^^^^^
 				if (users[i].role === "Mafioso"){
 					mafia.push(i);
 					users[i].nightAction = function(index){

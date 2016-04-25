@@ -36,12 +36,14 @@ angular.module('app.controllers', [])
 })
 
 .controller('pendingCtrl', function($scope, $ionicNavBarDelegate, services) {
-	$ionicNavBarDelegate.showBackButton(false);
-	$scope.Role = function(){
-		services.setRole();
-	}
-	services.setButton();
-	$scope.users = services.users;
+	$scope.$on('$ionicView.enter', function(){
+		$ionicNavBarDelegate.showBackButton(false);
+		$scope.Role = function(){
+			services.setRole();
+		}
+		services.setButton();
+		$scope.users = services.users;
+	});
 })
 
 .controller('gameNightCtrl', function($scope, $ionicNavBarDelegate, $ionicPopup, $timeout, $location, services) {
