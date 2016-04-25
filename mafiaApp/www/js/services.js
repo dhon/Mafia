@@ -65,7 +65,11 @@ angular.module('app.services', [])
 		setOtherTargets: function(){
 			//Set targets for all automated players
 			for (var i = 1; i < users.length; i++){
-				users[i].target = Math.floor(Math.random()*6 + 1);
+				var index = Math.floor(Math.random()*6 + 1);
+				while (!users[index].status){
+					index = Math.floor(Math.random()*6 + 1);
+				}
+				users[i].target = index;
 			}
 		},
 		kill,
