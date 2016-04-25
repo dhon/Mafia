@@ -54,7 +54,7 @@ angular.module('app.controllers', [])
 		//Code found on http://jsbin.com/haliz/1/edit?html,js,output
 		//Written by Mario Zupan
 		//Open-source
-		$scope.counter = 8;
+		$scope.counter = 12;
  		var mytimeout = null; 
 		$scope.onTimeout = function() {
 	        if($scope.counter ===  0) {
@@ -122,7 +122,7 @@ angular.module('app.controllers', [])
 		//Code found on http://jsbin.com/haliz/1/edit?html,js,output
 		//Written by Mario Zupan
 		//Open-source
-		$scope.counter = 8;
+		$scope.counter = 12;
  		var mytimeout = null; 
 		$scope.onTimeout = function() {
 	        if($scope.counter ===  0) {
