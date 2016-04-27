@@ -1,17 +1,26 @@
+/*THIS FILE IS THE MODEL. IT CONTAINS ARRAYS OF ROLES
+AND USERS AS WELL AS ALL FUNCTIONS CALLED FROM THE
+CONTROLLER. ALL OBJECTS IN THIS FILE AS WELL AS ALL
+FUNCTIONS ARE IN A RETURN BLOCK. THEY ARE RETURNED TO
+controllers.js WHERE THEY ARE ACCESSED. */
+
 angular.module('app.services', [])
 
 .factory('services', [function(){
+	//Static array that sets the rols in the game and the actions each role has. This may be modified
+	//for adding more players or roles by extending the array.
 	var roles=[
 	{rname: "Mafioso", raction:"Kill"},
 	{rname: "Mafioso", raction:"Kill"},
-	//MODIFIED FOR DEMO
-	// {rname: "Cop", raction: "Check"},
+	{rname: "Cop", raction: "Check"},
 	{rname:"Medic", raction:"Save"},
 	{rname: "Vanilla", raction:"Friend"},
 	{rname: "Vanilla", raction:"Friend"},
 	{rname: "Vanilla", raction:"Friend"}
 	];
 
+	//Dynamic array of all players in game. May be extended for more players. Each user is an object with
+	//attributes needed for the game.
 	var users=[
 	{uname:"",role:"",act:"", status:true, button:"", vote:"No", saved:false, target:-1, message:"", nightAction:undefined},
 	{uname:"",role:"",act:"", status:true, button:"", vote:"No", saved:false, target:-1, message:"", nightAction:undefined},
@@ -22,23 +31,29 @@ angular.module('app.services', [])
 	{uname:"",role:"",act:"", status:true, button:"", vote:"No", saved:false, target:-1, message:"", nightAction:undefined}
 	];
 
+	//Array holding all players on the Mafia team
 	var mafia = [];
 
+	//Static object holding the host's statistics. Would be dynamically generated for multiplayer.
 	stats={};
 	stats.games = 10;
 	stats.victories = 5;
 	stats.mafiaWin = 3;
 	stats.townWin = 2;
 
+	//Object containing most recent player put up to vote, and the result of that vote.
 	voted = {};
 	voted.vname = {};
 	voted.result = "live";
 
+	//Object set to the winning team to be displayed on the results page
 	winner = {};
 	winner.team = "";
 
+	//The following 3 functions perform the actions of Mafia, Medic, and Cop respectively
 	function kill(user){
 		user.status = false;
+		//Updates button to show dead status
 		user.button = user.uname + ' is dead. They were a ' + user.role + '.';
 	};
 	function save(user){
@@ -53,6 +68,7 @@ angular.module('app.services', [])
 		}
 	};
 	
+	//BEGINNING OF RETURN BLOCK. CONTAINS ALL FUNCTIONS AND OBJECTS ACCESSED BY controllers.js
 	return {
 		resetTarget: function(){
 			for (var i = 0; i < users.length; i++){
@@ -74,6 +90,7 @@ angular.module('app.services', [])
 		},
 		kill,
 		mafiaKill: function(){
+			//Allows automated mafia player to select its kill. 
 			if (users[0].role !== "Mafioso"){
 				for (var i = 0; i < mafia.length; i++){
 					//If the mafia player is alive and doesn't select another mafia player, 
@@ -86,6 +103,7 @@ angular.module('app.services', [])
 			}
 		},
 		medicSave: function(){
+			//Allows automated medic player to select its save.
 			if (users[0].role !== "Medic"){
 				for (var i = 1; i < users.length; i++){
 					if (users[i].role === "Medic"){
@@ -98,6 +116,7 @@ angular.module('app.services', [])
 		save,
 		check,
 		setRole: function(){
+			//Randomly scramble roles array
 			var current = roles.length, temp, randomIndex;
 			while (current !== 0){
 				randomIndex = Math.floor(Math.random()*current);
@@ -107,17 +126,13 @@ angular.module('app.services', [])
 				roles[current] = roles[randomIndex];
 				roles[randomIndex] = temp;
 			}
+			//Assign newly scrambled roles array to users array 1 to 1 and assign 
+			//nightAction function for each user depending on their role.
+			//Return value of each nightAction function is an array of messages to be
+			//displayed in a popup box during Day based on result of the action.
 			for (var i = 0; i < users.length; i++){
-				//MODIFIED FOR DEMO
-				if(i === 0){
-					users[i].role = "Cop";
-					users[i].act = "Check";
-				}
-				else{
-					users[i].role = roles[i-1].rname;
-					users[i].act = roles[i-1].raction;
-				}
-				//^^^^^^
+				users[i].role = roles[i].rname;
+				users[i].act = roles[i].raction;
 				if (users[i].role === "Mafioso"){
 					mafia.push(i);
 					users[i].nightAction = function(index){
@@ -156,15 +171,19 @@ angular.module('app.services', [])
 			users[mafia[0]].message = "Your partner is " +users[mafia[1]].uname+ ".";
 			users[mafia[1]].message = "Your partner is " +users[mafia[0]].uname+ ".";
 		},
+		//Each button will initially display the user's name
 		setButton: function(){
 			for (var i = 0; i < users.length; i++){
 				users[i].button = users[i].uname;
 			}
 		},
+		//Called at the end of a game. Resets all game data to the default, except for the host user's
+		//username, so they can remain logged in.
 		resetAll: function(){
-			users[0].role="";
-			for (var i = 1; i < users.length; i++){
-				users[i].uname="";
+			for (var i = 0; i < users.length; i++){
+				if (i !== 0){
+					users[i].uname="";
+				}
 				users[i].role="";
 				users[i].act="";
 				users[i].status = true;
@@ -220,6 +239,8 @@ angular.module('app.services', [])
 			}
 		},
 		checkVote: function(){
+			//Checks the outcome of voting by checking the majority of votes from living players.
+			//Ties go to live rather than die.
 			var count = 0;
 			var alive = 0;
 			var majority = 0;

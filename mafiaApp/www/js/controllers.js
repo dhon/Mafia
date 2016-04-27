@@ -1,5 +1,14 @@
+/*THIS FILE CONTAINS ALL OF THE CONTROLLERS. 
+THERE IS A CONTROLLER FOR EACH PAGE. THROUGHOUT THIS 
+FILE, services REFERS TO services.js AND ITS
+RETURN VALUES. $scope CONTROLS WHAT IS PASSED
+TO THE RESPECTIVE VIEWS OF EACH CONTROLLER. */
+
+//All controllers disable the default back button from Ionic and pass to the view
+//the users and their attributes.
 angular.module('app.controllers', [])
 
+//Home page checks to see if the user is logged in before starting a game
 .controller('page1Ctrl', function($scope, $ionicNavBarDelegate, $ionicPopup, $location, services) {
 	$ionicNavBarDelegate.showBackButton(false);
 	$scope.checkUser = function(){
@@ -35,6 +44,7 @@ angular.module('app.controllers', [])
 	$scope.stats = services.stats;
 })
 
+//Pending page sets the random roles for each player and sets the button displays
 .controller('pendingCtrl', function($scope, $ionicNavBarDelegate, services) {
 	$scope.$on('$ionicView.enter', function(){
 		$ionicNavBarDelegate.showBackButton(false);
@@ -46,6 +56,8 @@ angular.module('app.controllers', [])
 	});
 })
 
+//Night page is responsible throwing any alerts if an improper target is chosen in the Night. A countdown is kept
+//and there is a check done to see if the game is over after a vote the Day prior. 
 .controller('gameNightCtrl', function($scope, $ionicNavBarDelegate, $ionicPopup, $timeout, $location, services) {
 	$scope.$on('$ionicView.enter', function(){
 		$ionicNavBarDelegate.showBackButton(false);
@@ -110,6 +122,9 @@ angular.module('app.controllers', [])
 	});
 })
 
+//Day page automates the other players' roles if necessary, keeps a timer, and performs the nightAction
+//function for each player. A check is done to see if the Mafia killed enough Town to win in the Night
+//prior. The user is also able to Nominate someone to vote off. 
 .controller('gameDayCtrl', function($scope, $ionicNavBarDelegate, $ionicPopup, $timeout, $location, services) {
 	$scope.$on('$ionicView.enter', function(){
 		$ionicNavBarDelegate.showBackButton(false);
@@ -180,6 +195,7 @@ angular.module('app.controllers', [])
 	});
 })
 
+//Vote page keeps a timer and takes in the vote of the user and all automated players
 .controller('voteCtrl', function($scope, $ionicNavBarDelegate, $location, $timeout, services) {
 	$scope.$on('$ionicView.enter', function(){
 		$ionicNavBarDelegate.showBackButton(false);
@@ -192,7 +208,7 @@ angular.module('app.controllers', [])
 		//Code found on http://jsbin.com/haliz/1/edit?html,js,output
 		//Written by Mario Zupan
 		//Open-source
-		$scope.counter = 6;
+		$scope.counter = 8;
  		var mytimeout = null; 
 		$scope.onTimeout = function() {
 	        if($scope.counter ===  0) {
@@ -215,6 +231,7 @@ angular.module('app.controllers', [])
 	});
 })
 
+//Post vote displays the results of the vote and keeps a timer
 .controller('postVoteCtrl', function($scope, $ionicNavBarDelegate, $timeout, $location, services) {
 	$scope.$on('$ionicView.enter', function(){		
 		$ionicNavBarDelegate.showBackButton(false);
@@ -228,7 +245,7 @@ angular.module('app.controllers', [])
 		//Code found on http://jsbin.com/haliz/1/edit?html,js,output
 		//Written by Mario Zupan
 		//Open-source
-		$scope.counter = 6;
+		$scope.counter = 7;
  		var mytimeout = null; 
 		$scope.onTimeout = function() {
 	        if($scope.counter ===  0) {
@@ -255,6 +272,8 @@ angular.module('app.controllers', [])
 	$ionicNavBarDelegate.showBackButton(false);
 })
 
+//Results page displays the roles of all players and the winning team. All game data
+//besides the host's username is then reset. 
 .controller('resultsCtrl', function($scope, $ionicNavBarDelegate, services) {
 	$ionicNavBarDelegate.showBackButton(false);
 	$scope.users = services.users;

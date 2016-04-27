@@ -1,3 +1,7 @@
+/*THIS FILE IS RESPONSIBLE FOR ROUTING BETWEEN HTML VIEWS AND 
+CALLING THE PROPER CONTROLLER FROM controllers.js FOR EACH
+VIEW */
+
 angular.module('app.routes', [])
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -10,7 +14,7 @@ angular.module('app.routes', [])
     
   
 
-      .state('page1', {
+  .state('page1', {
     url: '/page1',
     templateUrl: 'templates/page1.html',
     controller: 'page1Ctrl'
