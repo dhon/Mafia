@@ -8,7 +8,7 @@ The files that we built followed the MVC design architecture. The Model may be f
 
 In order to run our app, the Ionic framework and its dependencies must be installed. To do so, make sure you first have Node.js installed on your machine and then run the following lines from your command line:
 
-$ sudo npm install -g cordova
+$ sudo npm install -g cordova <br>
 $ sudo npm install -g ionic
 
 Now you should have Ionic and its dependencies installed on your machine. In order to run the app, run the following line from within the mafiaApp directory found in this folder:
