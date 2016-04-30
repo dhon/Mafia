@@ -19,7 +19,6 @@ This will emulate the app within your internet browser. You will see two version
 
 # Testing
 
-<<<<<<< HEAD
 Our testing suite is built on the Karma and Jasmine frameworks. You will have to install Karma and its dependencies in order to run our test suite. Our test suite can be found in mafiaApp/tests/unit-tests/services/serviceTests.js. Karma is the test Runner and Jasmine is the testing framework. Install Karma by running the following commands within the mafiaApp directory in this folder:
 
 $ sudo npm install karma --save-dev <br>
@@ -35,5 +34,3 @@ Now you should be able to run the test suite. To do so, go to ./tests and run th
 $ karma start  unit-tests.conf.js
 
 Enjoy the testing!
-=======
->>>>>>> origin/master
