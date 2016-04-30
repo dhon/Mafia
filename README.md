@@ -23,11 +23,13 @@ Our testing suite is built on the Karma and Jasmine frameworks. You will have to
 
 $ sudo npm install karma --save-dev <br>
 $ sudo npm install karma-jasmine --save-dev <br>
-$ sudo npm install -g karma-cli
-
-If you encounter the error "Cannot find module: 'jasmine-core'", run the following line:
-
-$ sudo npm install -g jasmine-core
+$ sudo npm install -g bower <br>
+$ sudo bower install angular-mocks#1.4.3 --save-dev <br>
+$ sudo npm install -g karma-cli <br>
+$ sudo npm install <br>
+$ sudo npm install karma-chrome-launcher --save-dev <br>
+$ cd tests <br>
+$ sudo npm install karma-chrome-launcher --save-dev
 
 Now you should be able to run the test suite. To do so, go to ./tests and run the following command:
 
