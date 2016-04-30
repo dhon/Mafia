@@ -67,9 +67,29 @@ angular.module('app.services', [])
 			return "Town";
 		}
 	};
-	
+
+	//these functions allow us to retrieve and create players for testing
+	function getUser(index){
+		return users[index];
+	};
+	function setUserName(index, name){
+		users[index].uname = name;
+	};
+	function setUserRole(index, role){
+		users[index].role = role;
+	};
+	function setUserVote(index, vote){
+		users[index].vote = vote;
+	};
+	function getUserVoteResult(){
+		return voted.result;
+	};
+	function setUserVoteResult(result){
+		voted.result = result;
+	};
 	//BEGINNING OF RETURN BLOCK. CONTAINS ALL FUNCTIONS AND OBJECTS ACCESSED BY controllers.js
 	return {
+		getUser, setUserName, setUserRole, setUserVoteResult, getUserVoteResult, setUserVote,
 		resetTarget: function(){
 			for (var i = 0; i < users.length; i++){
 				users[i].target = -1;
