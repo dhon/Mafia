@@ -36,6 +36,6 @@ $ karma start  unit-tests.conf.js
 Refer to this link if you encounter errors, but be weary of overwriting project code:
 http://gonehybrid.com/how-to-write-automated-tests-for-your-ionic-app-part-2/
 
-If the testing suite still doesn't work, check the screenshots in the testingImages folder at the root of the project. 
+If the testing suite still doesn't work, check the screenshots in the testingImage folder at the root of the project. 
 
 Enjoy the testing!
