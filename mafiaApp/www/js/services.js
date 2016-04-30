@@ -68,7 +68,7 @@ angular.module('app.services', [])
 		}
 	};
 
-	//these functions allow us to retrieve and create players for testing
+	//These functions allow us to retrieve and create players for testing purposes
 	function getUser(index){
 		return users[index];
 	};
@@ -87,9 +87,13 @@ angular.module('app.services', [])
 	function setUserVoteResult(result){
 		voted.result = result;
 	};
+	//^^^^^^^^^^^^^^
+
 	//BEGINNING OF RETURN BLOCK. CONTAINS ALL FUNCTIONS AND OBJECTS ACCESSED BY controllers.js
 	return {
+		//These functions are returned solely for the purpose of testing
 		getUser, setUserName, setUserRole, setUserVoteResult, getUserVoteResult, setUserVote,
+		//^^^^^^
 		resetTarget: function(){
 			for (var i = 0; i < users.length; i++){
 				users[i].target = -1;
