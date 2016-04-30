@@ -29,7 +29,10 @@ module.exports = function(config) {
         // '../www/lib/ionic/js/ionic-angular.js'
 
     ],
-
+plugins: [
+        'karma-chrome-launcher',
+        'karma-jasmine'
+    ],
 
     // list of files to exclude
     exclude: [
