@@ -15,7 +15,7 @@ Now you should have Ionic and its dependencies installed on your machine. In ord
 
 $ ionic serve -l
 
-This will emulate the app within your internet browser. You will see two versions of the app, one for iOS and one for Android. Both work in the same way. Refreshing the page acts in the same way as closing out of the app on your mobile device. Enjoy playing Mafia!
+This will emulate the app within your internet browser. You will see two versions of the app, one for Android and one for iOS. Both work in the same way. Refreshing the page acts in the same way as closing out of the app on your mobile device. Enjoy playing Mafia!
 
 # Testing
 
